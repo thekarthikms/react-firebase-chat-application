@@ -1,0 +1,27 @@
+.App {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(240, 240, 240);
+  scrollbar-width: none;
+}
+
+.container{
+  height: 90vh;
+  width: 95%;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px  rgb(218, 218, 218);
+}
+
+.content{
+  height: 95%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
