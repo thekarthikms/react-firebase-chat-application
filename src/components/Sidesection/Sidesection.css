@@ -1,7 +1,7 @@
 .side-section-container{
     height: 100%;
     width: 25%;
-    background: rgba(255, 165,0, 0.1);
+    /* background: rgba(255, 165,0, 0.1); */
     margin: 10px;
     border-radius: 10px;
     display: flex;

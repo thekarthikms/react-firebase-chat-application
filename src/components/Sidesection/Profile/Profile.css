@@ -1,7 +1,69 @@
 .profile{
-    height: 20%;
+    height: max-content;
     width: 100%;
-    background: #000;
-    margin: 10px;
+    /* background-color: rgba(71,129,255,0.05); */
     border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    
+}
+
+#active{
+    background-color: rgba(71,129,255,0.1);
+}
+.profile-details{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    height: 100%;
+    width: 70%;
+    color: rgb(49, 58, 77);
+}
+
+
+.profile-icon{
+    height: 100%;
+    width: 15%;
+    background: rgba(49, 58, 77,0.8);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.details p{
+    margin:2px 0;
+}
+
+.details p:first-child{
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.details p:last-child{
+    font-size: 0.9rem;
+}
+
+.btn{
+    margin: 0;
+    align-self: right;
+    padding: 15px 30px;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(71, 129, 255);
+    width: 30%;
+    background-color: rgba(71, 129, 255,0.1);
+  
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.btn:hover{
+    background-color: rgba(71, 129, 255,0.3);
+    
 }

@@ -1,7 +1,7 @@
 .chat-section-container{
     height: 100%;
     width: 75%;
-    background: rgb(255,0,0,0.1);
+    background-color: rgba(71, 129, 255,0.05);
     margin: 10px;
     border-radius: 10px;
 }
