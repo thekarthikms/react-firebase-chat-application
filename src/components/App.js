@@ -6,9 +6,15 @@ import Sidesection from './Sidesection/Sidesection'
 import Register from './Register/Register'
 import Login from './Login/Login'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import {connect} from 'react-redux'
+import { useEffect, useState } from 'react';
 
-function App() {
-  let isLogged = false
+function App(props) {
+  let [isLogged,setUser] = useState(props.isLogged)
+  useEffect(()=>{
+    // setUser(!isLogged)
+    console.log(isLogged)
+  },[isLogged])
   return (
     <div className="App">
       <div className="container">
@@ -37,4 +43,11 @@ function App() {
   );
 }
 
-export default App;
+let mapStateToProps = (state)=>{
+  return {
+    isLogged : state.isLogged.isLogged
+  }
+}
+
+
+export default connect(mapStateToProps,null)(App);

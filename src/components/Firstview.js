@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
+
 let Firstview = () => {
+
+    
     return (
         <div className="reg-container">
              <div className="route-login">

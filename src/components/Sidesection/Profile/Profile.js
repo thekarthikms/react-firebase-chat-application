@@ -1,6 +1,18 @@
 import './Profile.css'
+import {UserRef} from '../../../firebase/firebase'
+import { useEffect, useState } from 'react'
 
 let Profile = () =>{
+    let [usrName,setName]=useState('')
+ 
+    useEffect(()=>{
+        UserRef.get().then((docs)=>{
+            docs.forEach((doc)=>{
+                setName(doc.data().username)
+                console.log(doc.data().username)
+            })
+        })
+    },[])
     return (
         <div className="profile">
             <div className="profile-details">
@@ -8,8 +20,8 @@ let Profile = () =>{
 
             </div>
             <div className="details">
-                    <p>Eren Jaegar</p>
-                    <p>@attack_titan</p>
+                    <p>{usrName}</p>
+                    <p>@{usrName}</p>
                 </div>
             </div>
           <button className="btn">Logout</button>
