@@ -1,0 +1,42 @@
+.chat-bar{
+    height: 10%;
+    width: 95%;
+    background-color:white ;
+    position: absolute;
+    bottom: 0;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.chat-input{
+    width: 85%;
+    height: 80%;
+    border: none;
+    font-size: 1.5rem;
+    color: #555;
+}
+
+.chat-send{
+    width: 10%;
+    height: 80%;
+    border: none;
+    background-color: rgba(71, 129, 255,0.8);
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.chat-input:focus,.chat-send:focus{
+    outline:none;
+}
+
+.chat-send:hover{
+    background: rgba(71, 129, 255,1);
+    color: white;
+}

@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(240, 240, 240);
+  background: rgb(71, 129, 255);
   scrollbar-width: none;
 }
 
@@ -13,8 +13,8 @@
   width: 95%;
   background: white;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 0px 10px  rgb(218, 218, 218);
+  overflow: scroll;
+  box-shadow: 0px 0px 1px 0px  rgb(255, 255, 255);
   padding: 10px;
 }
 

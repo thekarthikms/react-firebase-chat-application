@@ -1,0 +1,19 @@
+{
+    "user": {
+        "user": "username",
+        "password": "pwd",
+        "riends": [
+            "username"
+        ],
+        "chats": {
+            "username": [
+                "chat1", "chat2"
+            ]
+        }
+    },
+    "chats": {
+        "id": "required && string",
+        "message": "string",
+        "timestamp": "time of send"
+    }
+}

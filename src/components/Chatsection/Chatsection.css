@@ -1,7 +1,40 @@
 .chat-section-container{
     height: 100%;
     width: 75%;
-    background-color: rgba(71, 129, 255,0.05);
+    background-color: rgba(71, 129, 255,0.1);
     margin: 10px;
     border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.img-container{
+    position: absolute;
+    height: 70%;
+    width: 70%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.img-container img{
+    height: 90%;
+    object-fit: fill;
+    z-index: 0;
+    filter: brightness(150%);
+}
+
+.img-container p{
+    color: rgba(71, 129, 255,1);
+    font-size: 1.5rem;
+    
 }

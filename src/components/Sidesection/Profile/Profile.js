@@ -12,7 +12,7 @@ let Profile = () =>{
                     <p>@attack_titan</p>
                 </div>
             </div>
-          <button className="btn">Sign Out</button>
+          <button className="btn">Logout</button>
         </div>
     )
 }

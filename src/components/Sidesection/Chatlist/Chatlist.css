@@ -47,3 +47,31 @@ p{
     font-size: 0.8rem;
     padding: 5px 10px;
 }
+
+.img-contain{
+    position: absolute;
+    height: 50%;
+    width: 90%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.img-contain img{
+    height: 90%;
+    object-fit: fill;
+    z-index: 0;
+    filter: brightness(150%);
+}
+
+.img-contain p{
+    color: rgba(71, 129, 255,1);
+    font-size: 1rem;
+    font-weight: bold;
+}
+

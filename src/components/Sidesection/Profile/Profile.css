@@ -7,7 +7,7 @@
     padding: 10px;
     display: flex;
     align-items: center;
-    
+    justify-content: space-between;    
 }
 
 #active{
@@ -47,14 +47,13 @@
 .btn{
     margin: 0;
     align-self: right;
-    padding: 15px 30px;
+    padding: 10px 20px;
     border: none;
     background: transparent;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
     color: rgb(71, 129, 255);
-    width: 30%;
     background-color: rgba(71, 129, 255,0.1);
   
 }

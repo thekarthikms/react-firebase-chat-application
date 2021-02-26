@@ -1,0 +1,57 @@
+.log-container{
+    height: 80%;
+    width: 30%;
+    background-color: rgba(71, 129, 255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.log-container .form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.log{
+    height: 10%;
+    width: 80%;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-family: 'Ubuntu',sans-serif;
+    font-weight: bold;
+}
+
+.log:focus{
+    outline: none;
+}
+
+.log-btn{
+    background-color: rgba(71, 129, 255,0.8);
+    color: white;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+.log-btn:hover{
+    background-color: rgba(71,129,255,1);
+}
+
+.links{
+    text-decoration: none;
+    color: rgba(71, 129, 255,1);
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.route-login{
+    margin: 20px 0;
+}
