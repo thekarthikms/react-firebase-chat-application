@@ -99,16 +99,22 @@
   }
 
   .search-res{
-      background: rgba(0,255,0,0.1);
+      background: rgba(71, 129, 255,0.1);
       width: 100%;
       height: 100px;
       display: none;
       align-items: center;
-      justify-content: center;
+      justify-content: space-evenly;
       border-radius:10px;
-      color: green;
+      color: rgba(71, 129, 255,0.8);
       margin: 10px 0;
   }
+
+  .search-res  div p{
+    font-size: 2rem;
+    color: rgba(71, 129, 255,0.8);
+  }
+
   .err-res{
     background: rgba(255,0,0,0.1);
     width: 100%;

@@ -1,17 +1,20 @@
 import './Profile.css'
-import {UserRef} from '../../../firebase/firebase'
+import { UserRef } from '../../../firebase/firebase'
 import { useEffect, useState } from 'react'
-
-let Profile = () =>{
+import { connect } from 'react-redux'
+import { userlogout } from "../../../redux/actions/userlog_action";
+import { useHistory } from 'react-router-dom';
+let Profile = (props) =>{
     let [usrName,setName]=useState('')
- 
+    let history = useHistory()
+    let handleClick=() =>{
+        props.logout()
+        history.push('/login')
+        
+    }
+    console.log('from profile',props.userlog)
     useEffect(()=>{
-        UserRef.get().then((docs)=>{
-            docs.forEach((doc)=>{
-                setName(doc.data().username)
-                console.log(doc.data().username)
-            })
-        })
+        setName(props.userlog.user.username)
     },[])
     return (
         <div className="profile">
@@ -24,9 +27,19 @@ let Profile = () =>{
                     <p>@{usrName}</p>
                 </div>
             </div>
-          <button className="btn">Logout</button>
+          <button className="btn" onClick={handleClick}>Logout</button>
         </div>
     )
 }
 
-export default Profile
+let mapStateToProps = state =>{
+    return state
+}
+
+let mapDispatchToProps = dispatch =>{
+    return{
+        logout:()=>{dispatch(userlogout())}
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Profile)

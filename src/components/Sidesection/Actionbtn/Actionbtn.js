@@ -2,9 +2,11 @@ import {useRef, useState} from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {  faPlus, faTimes} from '@fortawesome/free-solid-svg-icons'
 import './Actionbtn.css'
+import {UserRef} from '../../../firebase/firebase'
+import { connect } from 'react-redux'
+import firebase from 'firebase/firebase'
 
-
-let Actionbtn = ()=>{
+let Actionbtn = (props)=>{
     const plus = <FontAwesomeIcon icon={faPlus} />
     const close = <FontAwesomeIcon icon={faTimes}/>
     const modRef = useRef()
@@ -19,18 +21,35 @@ let Actionbtn = ()=>{
         modRef.current.style.display = "none"
     }
     const searchUsr = ()=>{
-        setRes(inputRef.current.value)
+        let searchUname = inputRef.current.value
+        UserRef.where('username','==',searchUname).get().then(users=>{
+            
+            let userslist = []
+            users.forEach(user => {
+                
+                console.log(user)
+                userslist.push(user.data().username)
+            });
+            if(userslist.length!==0){
+                setRes(userslist[0])
+                searchRef.current.style.display = "flex"
+            }
+
+        })
         if(inputRef.current.value === ""){
-            errRef.current.style.display = "none"
+           errRef.current.style.display = "none"
         searchRef.current.style.display = "none"
-        }else{
-            errRef.current.style.display = "flex"
-        searchRef.current.style.display = "flex"
         }
         
-        setRes(inputRef.current.value)
+        
     }
-   
+
+
+    let handleClick = ()=>{
+        UserRef.doc(props.userlog.user.userid).update({
+            friends:firebase.firestore.FieldValue.arrayUnion(res)
+        })
+    }
     return (
         <div className="action-section">
             <div className="add-user">
@@ -46,15 +65,17 @@ let Actionbtn = ()=>{
                     <div className="close" onClick={closeModal }>{close}</div>
                     <div className="form">
                         <input className="search-input" type="text" ref={inputRef} onChange={searchUsr} placeholder="Enter username"/>
-                        <button className="actn-btn" onClick={searchUsr}>
-                            Search User Name
-                        </button>
+                       
                     </div>
                     <div className="search-res" ref={searchRef}>
-                        {res}
+                        <div><p>{res}</p></div>
+                        <button className="actn-btn" onClick={handleClick}>
+                            Add Friend
+                        </button>
                     </div>
                     <div className="err-res" ref={errRef}>
-                        {res}
+                       <p>No Users Found</p>
+                       
                     </div>
                 </div>
 
@@ -64,4 +85,8 @@ let Actionbtn = ()=>{
     )
 }
 
-export default Actionbtn
+let mapStateToProps = state =>{
+    return state
+}
+
+export default connect(mapStateToProps,null)(Actionbtn)

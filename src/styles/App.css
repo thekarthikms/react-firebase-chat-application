@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(71, 129, 255);
+  background: linear-gradient(135deg,rgba(71, 129, 255,0.5),rgba(71, 129, 255,1));
   scrollbar-width: none;
 }
 

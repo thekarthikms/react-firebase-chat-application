@@ -1,7 +1,7 @@
-import isLogged from './reducers/isLogged'
+import userlog from './reducers/userlog_reducer'
 import {createStore,combineReducers } from 'redux'
 
-let rootReducer = combineReducers({isLogged})
+let rootReducer = combineReducers({userlog})
 
 const store = createStore(
     rootReducer
