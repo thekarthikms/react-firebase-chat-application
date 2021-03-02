@@ -4,16 +4,21 @@ import crowd from '../../../assets/crowd.png'
 import {connect} from 'react-redux'
 import { useEffect, useState } from 'react'
 import { UserRef } from '../../../firebase/firebase'
+import { chatlistSet } from '../../../redux/actions/chatlist_action'
 let Chatlist =(props)=>{
-    let [listState,setListState] = useState(false)
+    // let [listState,setListState] = useState(false)
     let [chatList,setChatList] =useState([])
     console.log(props.userlog)
+    console.log(props.chatlist.chatlist)
+    console.log("props from chat list ",)
+   
 
     useEffect(()=>{
         UserRef.doc(props.userlog.user.userid).get().then(doc=>{
             let friends = doc.data().friends
             if(friends.length !== 0){
-                setListState(true)
+                // setListState(true)
+                props.setChat()
                 console.log(friends.length)
                 let chats =[]
                 for(let i=0;i<friends.length;i++){
@@ -27,11 +32,11 @@ let Chatlist =(props)=>{
             }
         })
         
-    },[])
+    },[props.chatlist.listToggle])
     return (
         <div className="chats">
             <p className="p_title">Conversations</p>
-            {listState?
+            {props.chatlist.chatlist?
             <>
                 
                 {chatList}
@@ -48,4 +53,10 @@ let mapStateToProps = state =>{
     return state
 }
 
-export default connect(mapStateToProps,null)(Chatlist)
+let mapDispatchToProps = dispatch =>{
+    return {
+        setChat:()=>{dispatch(chatlistSet())}
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Chatlist)

@@ -5,6 +5,7 @@ import './Actionbtn.css'
 import {UserRef} from '../../../firebase/firebase'
 import { connect } from 'react-redux'
 import firebase from 'firebase/firebase'
+import {chatlistSet,listToggle} from '../../../redux/actions/chatlist_action'
 
 let Actionbtn = (props)=>{
     const plus = <FontAwesomeIcon icon={faPlus} />
@@ -47,8 +48,26 @@ let Actionbtn = (props)=>{
 
     let handleClick = ()=>{
         UserRef.doc(props.userlog.user.userid).update({
-            friends:firebase.firestore.FieldValue.arrayUnion(res)
+            friends:firebase.firestore.FieldValue.arrayUnion(res)     
         })
+        UserRef.doc(props.userlog.user.userid).update({
+            [`chats.${res}`]:[]
+        })
+        UserRef.where("username",'==',res).get().then(users=>{
+            users.forEach(user=>{
+                console.log('console from add friend',user.id)
+                let uid = `${user.id}`
+                UserRef.doc(uid).update({
+                    friends:firebase.firestore.FieldValue.arrayUnion(props.userlog.user.username)     
+                })
+                UserRef.doc(uid).update({
+                    [`chats.${props.userlog.user.username}`]:[]
+                })
+            })
+        }
+        )
+        props.toggleChat()
+        props.setChat()
     }
     return (
         <div className="action-section">
@@ -89,4 +108,12 @@ let mapStateToProps = state =>{
     return state
 }
 
-export default connect(mapStateToProps,null)(Actionbtn)
+let mapDispatchToProps = dispatch =>{
+    return {
+        setChat : ()=>{dispatch(chatlistSet())},
+        toggleChat:()=>{dispatch(listToggle())}
+        
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Actionbtn)
