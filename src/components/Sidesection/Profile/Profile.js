@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { userlogout } from "../../../redux/actions/userlog_action";
 import { useHistory } from 'react-router-dom';
+import {unselectChat} from '../../../redux/actions/chatselect_action'
+import {clrMsg} from '../../../redux/actions/messages_action'
 let Profile = (props) =>{
     let [usrName,setName]=useState('')
     let history = useHistory()
@@ -12,7 +14,6 @@ let Profile = (props) =>{
         history.push('/login')
         
     }
-    console.log('from profile',props.userlog)
     useEffect(()=>{
         setName(props.userlog.user.username)
     },[])
@@ -38,7 +39,11 @@ let mapStateToProps = state =>{
 
 let mapDispatchToProps = dispatch =>{
     return{
-        logout:()=>{dispatch(userlogout())}
+        logout:()=>{
+            dispatch(userlogout())
+            dispatch(unselectChat())
+            dispatch(clrMsg())
+        }
     }
 }
 

@@ -27,8 +27,6 @@ let Actionbtn = (props)=>{
             
             let userslist = []
             users.forEach(user => {
-                
-                console.log(user)
                 userslist.push(user.data().username)
             });
             if(userslist.length!==0){
@@ -55,7 +53,6 @@ let Actionbtn = (props)=>{
         })
         UserRef.where("username",'==',res).get().then(users=>{
             users.forEach(user=>{
-                console.log('console from add friend',user.id)
                 let uid = `${user.id}`
                 UserRef.doc(uid).update({
                     friends:firebase.firestore.FieldValue.arrayUnion(props.userlog.user.username)     

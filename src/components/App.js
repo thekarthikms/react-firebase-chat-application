@@ -11,7 +11,6 @@ import {connect} from 'react-redux'
 
 function App(props) {
   let isLogged = props.isLogged
-  console.log(isLogged)
   return (
     <div className="App">
       <div className="container">

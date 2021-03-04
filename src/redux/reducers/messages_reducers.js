@@ -11,6 +11,14 @@ let messages = (state=defaultState,action)=>{
                 isMessage:true,
                 messages:action.payload.messages
             }
+        case "CLR MSG":{
+           
+            return {
+                ...state,
+                isMessage:false,
+                messages:[]
+            }
+        }
         default:return state
     }
 }

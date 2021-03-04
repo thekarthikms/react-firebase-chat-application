@@ -18,7 +18,6 @@ let Register = (props)=>{
                 friends:[],
                 chats:{}
             }
-            console.log('from register',postData)
             UserRef.add(postData)
             history.push('/login')
         }

@@ -7,3 +7,9 @@ export function selectChat(username,userid){
         }
     }
 }
+
+export function unselectChat(){
+    return{
+        type:"DEACT"
+    }
+}

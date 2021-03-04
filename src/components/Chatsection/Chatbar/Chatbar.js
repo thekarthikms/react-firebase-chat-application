@@ -4,6 +4,7 @@ import { ChatRef, UserRef } from '../../../firebase/firebase'
 import firebase from 'firebase/firebase'
 import './Chatbar.css'
 import { msgTog } from '../../../redux/actions/messagelist_action'
+import { setMsg,clrMsg } from "../../../redux/actions/messages_action";
 let Chatbar = (props) =>{
     let sendRef = useRef()
     let handleClick =()=>{
@@ -18,10 +19,16 @@ let Chatbar = (props) =>{
         }
         uniqId.set(chatObject)
         UserRef.doc(sendUser).update({
-            
+                
                 [`chats.${uid}`]:firebase.firestore.FieldValue.arrayUnion(uniqId.id)
             
         })
+        let sendData = [chatObject.message,chatObject.timestamp.toDate(),props.userlog.user.username,chatObject.id]
+        let msglist = props.messages.messages
+        
+        props.clearmessage()
+        msglist.push(sendData)
+       props.setmessage(msglist)
        sendRef.current.value=""
        props.messagetog()
     }
@@ -39,7 +46,9 @@ let mapStateToProps = (state)=>{
 
 let mapDispatchToProps = dispatch =>{
     return{
-        messagetog:()=>{dispatch(msgTog())}
+        messagetog:()=>{dispatch(msgTog())},
+        setmessage:(message)=>{dispatch(setMsg(message))},
+        clearmessage:()=>{dispatch(clrMsg())}
     }
 }
 

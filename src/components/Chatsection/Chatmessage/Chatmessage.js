@@ -9,17 +9,43 @@ let Chatmessage = (props) =>{
 
     let [messageList,setMessages] = useState()
     useEffect(()=>{
-        console.log("from chatmessageee",props.messages)
-        if(props.messages.isMessage){
-            let messages = props.messages.messages
-            console.log(messages)
-            let temps= []
-            messages.forEach(message => {
-               temps.push( <Sendmsg msg={message} />)
-            });
-            setMessages(temps)
-        }
+            getMessage()
+            
+       
     },[props.messagelist.messageListToggle])
+
+    let getMessage = async () =>{
+        let messages = props.messages.messages
+        setTimeout(() => {
+            let temps=[]
+            let newmm = messages.sort((a,b)=>{
+                return a[1]-b[1]
+            })
+            for(let i=0;i<newmm.length;i++){
+                let time=newmm[i][1].toLocaleString()
+                if(newmm[i][2]===props.userlog.user.username){
+                   
+                    temps.push(
+                        <Sendmsg key={i} msg={newmm[i][0]} time={time}/>
+                    )
+                }
+                else{
+                    temps.push(
+                        <Recemsg key={i} msg={newmm[i][0]} time={time}/>
+                    )
+                }
+               
+            }
+
+            // messages.forEach(message=>{
+            //     console.log(message)
+            //     temps.push(
+            //         <Sendmsg msg={message} />
+            //     )
+            // })
+            setMessages(temps)
+        }, 1000);
+    }
 
     return (
         <div className="message-container">
@@ -27,7 +53,7 @@ let Chatmessage = (props) =>{
             <Recemsg msg="Hello"/>
             <Sendmsg msg="How are u ?" />
             <Recemsg msg="Fine. Thanks"/> */}
-            {console.log(messageList)}
+            
             {messageList}
         </div>
     )

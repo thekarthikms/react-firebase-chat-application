@@ -25,3 +25,9 @@
     background: rgba(71, 129, 255,0.2);
 
 }
+
+.msg p:last-child{
+    font-size:0.8rem;
+    font-weight: bold;
+    color: rgba(0, 0,0,0.3);
+}

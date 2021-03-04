@@ -6,3 +6,9 @@ export function setMsg(messages){
         }
     }
 }
+
+export function clrMsg(){
+    return {
+        type:"CLR MSG"
+    }
+}

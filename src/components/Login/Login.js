@@ -13,7 +13,6 @@ let Login = (props) =>{
     let password = useRef()
     
     let [useClick,setClick] = useState(false)
-    console.log("from login",props.userlog)
     let handleClick = ()=>{
         setClick(true)
        
@@ -30,6 +29,9 @@ let Login = (props) =>{
                         
                         props.login(uname,user.id)
                         history.push('/chats')
+                    }
+                    else{
+                        alert("wrong username and password")
                     }
                 });
                 

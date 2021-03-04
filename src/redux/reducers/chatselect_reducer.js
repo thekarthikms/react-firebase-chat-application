@@ -17,6 +17,15 @@ let chatselect = (state=defaultState,action)=>{
                     userid:action.payload.userid
                 }
             }
+        case "DEACT":
+            return{
+                ...state,
+                active:false,
+                user:{
+                    username:"",
+                    userid:""
+                }
+            }
         default: return state
     }
 }
