@@ -14,15 +14,17 @@ let Chatsection = (props)=>{
     let chat = props.chatselect.active
     useEffect(()=>{
      if(props.chatselect.user.username){
-        fetchChat()
-        
+        let unsubscribe = fetchChat()
+        return (()=>{
+            unsubscribe()
+        })        
      }
         
     },[props.messagelist.messageListToggle])
 
     let fetchChat = ()=>{
        
-        UserRef.where("username", "==",props.chatselect.user.username).onSnapshot((snapshot)=>{
+        return UserRef.where("username", "==",props.chatselect.user.username).onSnapshot((snapshot)=>{
             snapshot.docChanges().forEach(async (change)=>{
                 if(change.type === "modified"){
                     let arr = change.doc.data().chats[props.userlog.user.username]
