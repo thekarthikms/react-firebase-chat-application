@@ -7,6 +7,20 @@ import {msgTog} from '../../../redux/actions/messagelist_action'
 import { setMsg,clrMsg } from "../../../redux/actions/messages_action";
 let Chat =(props)=>{
     let [active,setActive]=useState("not-active")
+    let [message,setm] = useState('')
+    useEffect(()=>{
+        let messages =props.messages.messages
+       if(messages.length !== 0){
+            if(props.friendname === props.chatselect.user.username){
+                
+        let len = messages.length
+        let message = messages[len-1][0]
+        setm(message)
+            }
+        
+       }
+    },[props.messagelist.messageListToggle])
+
     useEffect(()=>{
         if(props.userlog.user.username){
             setActive('active')
@@ -97,7 +111,7 @@ let Chat =(props)=>{
                 </div>
                 <div className="prof-details">
                     <p className="p_title">{props.friendname}</p>
-                    <p className="p_msg">props</p>
+                    <p className="p_msg">{message}</p>
                 </div>
         </div>
     )

@@ -63,8 +63,11 @@ let Actionbtn = (props)=>{
             })
         }
         )
+       
         props.toggleChat()
         props.setChat()
+        inputRef.current.value = ""
+        closeModal()
     }
     return (
         <div className="action-section">
